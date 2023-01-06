@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions", "filterJson", "filteredRelationCount"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                      String              @id @default(cuid())
+  name                    String?             @map("name")
+  email                   String?             @unique
+  password                String?
+  userRole                UserRole?           @map("user_role") @default(USER)
+
+  createdAt               DateTime?           @map("created_at") @default(now())
+  updatedAt               DateTime?           @map("updated_at") @updatedAt
+  deletedAt               DateTime?           @map("deleted_at")
+
+  telephone               Telephone[]
+
+  @@map("users")
+}
+
+model Telephone {
+  id                      String              @id @default(cuid())
+  number                  String?             @map("number")
+
+  createdAt               DateTime?           @map("created_at") @default(now())
+  updatedAt               DateTime?           @map("updated_at") @updatedAt
+
+  userId                  String              @map("user_id")
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("telephones")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}

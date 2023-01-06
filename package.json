@@ -4,7 +4,7 @@
   "description": "NestJS DB module",
   "license": "MIT",
   "private": true,
-  "main": "dist/index.js",
+  "main": "dist/index.d.ts",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",

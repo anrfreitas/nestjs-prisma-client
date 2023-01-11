@@ -5,9 +5,9 @@ CREATE TYPE "UserRole" AS ENUM ('USER', 'ADMIN');
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "name" TEXT,
-    "email" TEXT,
+    "email" TEXT NOT NULL,
     "password" TEXT,
-    "user_role" "UserRole" DEFAULT 'USER',
+    "user_role" "UserRole" NOT NULL DEFAULT 'USER',
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
     "deleted_at" TIMESTAMP(3),
@@ -18,8 +18,8 @@ CREATE TABLE "users" (
 -- CreateTable
 CREATE TABLE "telephones" (
     "id" TEXT NOT NULL,
-    "number" TEXT,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "number" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
     "user_id" TEXT NOT NULL,
 

@@ -1,15 +1,18 @@
 /* eslint-disable no-console */
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient, User, UserRole } from '@prisma/client';
+
+type TimestampFields = 'createdAt' | 'updatedAt' | 'deletedAt';
 
 function generateTestingUserData(
     id: string,
-    userRole: 'USER' | 'ADMIN',
-): Partial<User> {
+    userRole: UserRole,
+): Omit<User, TimestampFields> {
     return {
         id,
         name: `No. ${id}`,
         email: `dev_${id}@nestjs.com`,
         userRole,
+        password: '',
     };
 }
 

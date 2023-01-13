@@ -1,10 +1,6 @@
-/* eslint-disable no-console */
 import { PrismaClient, User } from '@prisma/client';
 
-function generateTestingUserData(
-    id: string,
-    userRole: 'USER' | 'ADMIN',
-): Partial<User> {
+function generateTestingUserData(id: string, userRole: 'USER' | 'ADMIN'): Partial<User> {
     return {
         id,
         name: `No. ${id}`,
@@ -19,10 +15,7 @@ async function run(prisma: PrismaClient, counter: number, debug: boolean) {
 
     await prisma.user
         .createMany({
-            data: [
-                generateTestingUserData('1', 'USER'),
-                generateTestingUserData('2', 'ADMIN'),
-            ],
+            data: [generateTestingUserData('1', 'USER'), generateTestingUserData('2', 'ADMIN')],
             skipDuplicates: true,
         })
         .catch((err: any) => {

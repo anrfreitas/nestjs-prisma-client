@@ -1,12 +1,10 @@
-/* eslint-disable no-console */
-import { PrismaClient } from '@prisma/client';
 import fs from 'fs';
 import exec from 'child_process';
 import util from 'util';
+import { PrismaClient } from '@prisma/client';
 import userSeed from './seeds/1_users';
 
 async function seed(debug = true) {
-    // eslint-disable-next-line prefer-const
     let counter = 1; // the counter is going to be incremented
     const prisma: PrismaClient = new PrismaClient({
         datasources: {
@@ -35,6 +33,7 @@ async function seed(debug = true) {
             files.sort().map(async (fileName, index) => {
                 const preCommand = 'PGPASSWORD=secret psql -h localhost -d zero_db -U zero';
                 const command = `${preCommand} -f ${sqlPath}/${fileName}`;
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 const output = await nodeTerminal(command).catch(() => {});
                 if (output && output.stdout) {
                     console.log(
@@ -46,9 +45,7 @@ async function seed(debug = true) {
                 }
             }),
         );
-    } catch (e) {
-        // eslint-disable-next-line no-empty
-    }
+    } catch (e) {}
 
     /* *********************************** */
 

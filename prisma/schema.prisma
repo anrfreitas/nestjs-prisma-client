@@ -11,18 +11,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Account {
+  id                      String              @id @default(cuid())
+  userId                  String              @map("user_id")
+  type                    String
+  provider                String
+  providerAccountId       String              @map("provider_account_id")
+  refresh_token           String?             @db.Text
+  access_token            String?             @db.Text
+  expires_at              Int?
+  token_type              String?
+  scope                   String?
+  id_token                String?             @db.Text
+  session_state           String?
+  oauth_token             String?             @db.VarChar(60)
+  email                   String?             @unique
+  password                String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@unique([provider, email])
+  @@map("accounts")
+}
+
 model User {
   id                      String              @id @default(cuid())
   name                    String?             @map("name")
   email                   String              @unique
-  password                String?
   userRole                UserRole            @map("user_role") @default(USER)
 
-  createdAt               DateTime?            @map("created_at") @default(now())
+  createdAt               DateTime?           @map("created_at") @default(now())
   updatedAt               DateTime?           @map("updated_at") @updatedAt
   deletedAt               DateTime?           @map("deleted_at")
 
   telephone               Telephone[]
+  accounts                Account[]
 
   @@map("users")
 }

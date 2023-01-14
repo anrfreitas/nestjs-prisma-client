@@ -3,6 +3,7 @@ import exec from 'child_process';
 import util from 'util';
 import { PrismaClient } from '@prisma/client';
 import userSeed from './seeds/1_users';
+import accountSeed from './seeds/2_accounts';
 
 async function seed(debug = true) {
     let counter = 1; // the counter is going to be incremented
@@ -21,6 +22,10 @@ async function seed(debug = true) {
     /* Add your migrations below this line */
 
     await userSeed(prisma, counter, debug).then(() => {
+        counter += 1;
+    });
+
+    await accountSeed(prisma, counter, debug).then(() => {
         counter += 1;
     });
 

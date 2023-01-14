@@ -9,7 +9,6 @@ function generateTestingUserData(id: string, userRole: UserRole): Omit<User, Tim
         name: `No. ${id}`,
         email: `dev_${id}@nestjs.com`,
         userRole,
-        password: '',
     };
 }
 

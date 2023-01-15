@@ -2,7 +2,7 @@
   "name": "@nestjs-prisma/database",
   "author": "André Freitas",
   "version": "1.0.4",
-  "description": "NestJS DB module",
+  "description": "NestJS DB module1",
   "license": "MIT",
   "private": true,
   "main": "dist/index.js",

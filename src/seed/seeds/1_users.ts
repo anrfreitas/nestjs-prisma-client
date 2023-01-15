@@ -6,8 +6,8 @@ type TimestampFields = 'createdAt' | 'updatedAt' | 'deletedAt';
 function generateTestingUserData(id: string, userType: UserType): Omit<User, TimestampFields> {
     return {
         id,
-        name: `No. ${id}`,
-        email: `dev_${id}@nestjs.com`,
+        name: `John Doe`,
+        email: `dev_${id}@test.com`,
         userType,
     };
 }

@@ -7,7 +7,7 @@ function generateTestingUserData(id: string, userType: UserType): Omit<User, Tim
     return {
         id,
         name: `John Doe`,
-        email: `dev_${id}@test.com`,
+        email: `test${id}@test.com`,
         userType,
     };
 }

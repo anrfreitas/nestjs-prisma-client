@@ -17,7 +17,7 @@ function generateTestingAccountData(id: string): Omit<Account, TokenFields> {
         userId: id,
         provider: 'app',
         type: 'credentials',
-        email: `dev_${id}@nestjs.com`,
+        email: `test${id}@test.com`,
         password:
             '$argon2id$v=19$m=4096,t=3,p=1$3Z7cLGdKVu5KLq9An10jRA$Kb6TlWtJYa7lFnRCOWm3tBJjyqJlvrWncNaKP3FZvoQ', // testtest
     };

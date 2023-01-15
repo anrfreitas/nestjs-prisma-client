@@ -9,6 +9,7 @@ function generateTestingUserData(id: string, userType: UserType): Omit<User, Tim
         name: `John Doe`,
         email: `test${id}@test.com`,
         userType,
+        emailVerified: null,
     };
 }
 

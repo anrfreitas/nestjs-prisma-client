@@ -27,6 +27,7 @@ CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "name" TEXT,
     "email" TEXT NOT NULL,
+    "email_verified" TIMESTAMP(3),
     "user_type" "UserType" NOT NULL DEFAULT 'USER',
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),

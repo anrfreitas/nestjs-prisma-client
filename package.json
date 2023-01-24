@@ -1,7 +1,7 @@
 {
   "name": "@nestjs-prisma/database",
   "author": "André Freitas",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "NestJS DB module",
   "license": "MIT",
   "private": true,
